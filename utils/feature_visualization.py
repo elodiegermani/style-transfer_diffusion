@@ -153,7 +153,7 @@ def compute_features(model, dataset, classe):
 	return all_img_full
 
 def get_correlation_features(model, dataset):
-	features = []
+	features = {}
 	correlations = {}
 
 	for c1 in dataset.label_list:
