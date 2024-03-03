@@ -14,6 +14,9 @@ Samples generated from the model.
 </p>
 
 ## How to reproduce ? 
+
+If you use pre-trained models, for each command used to evaluate performance, change `--model_param` to the path of the pre-trained classifier and `--model_save_dir` to the path of the directory containing the pre-trained diffusion models. 
+
 ### Classifier
 
 #### Train
@@ -21,13 +24,10 @@ Samples generated from the model.
 python3.10 -u main.py --model classifier --data_dir data --dataset dataset_rh_4classes --labels pipelines --model_save_dir results/models --batch_size 64 --lrate 1e-4 --n_epoch 150
 ```
 
-#### Download pre-trained model 
-TODO
-
-#### Evaluate performance 
+#### Evaluate 
 
 ```bash 
-python3.10 -u main.py --model classifier --data_dir data --dataset dataset_rh_4classes --labels pipelines --mode test --model_param ./results/models/classifier_b-64_lr-1e-04_epochs_140.pth
+python3.10 -u main.py --model classifier --data_dir data --dataset dataset_rh_4classes --labels pipelines --mode test --model_param ./results/models/classifier_b-64_lr-1e-04_epochs_150.pth
 ```
 
 ### Diffusion models 
@@ -37,11 +37,8 @@ python3.10 -u main.py --model classifier --data_dir data --dataset dataset_rh_4c
 python3.10 -u main.py --model cc_ddpm --mode train --dataset dataset_rh_4classes --labels pipelines --model_save_dir results/models --batch_size 8 --lrate 1e-4 --n_epoch 200 --n_classes 4 --sample_dir results/samples
 ```
 
-#### Download pre-trained model 
-TODO
-
-#### Evaluate performance
+#### Transfer
 
 ```bash
-python3.10 -u main.py --model cc_ddpm --mode transfer --dataset dataset_rh_4classes --labels pipelines --model_save_dir results/models --test_iter 190 --n_classes 4 --sample_dir results/samples
+python3.10 -u main.py --model cc_ddpm --mode transfer --dataset dataset_rh_4classes --labels pipelines --model_save_dir results/models --test_iter 200 --n_classes 4 --sample_dir results/samples
 ```
