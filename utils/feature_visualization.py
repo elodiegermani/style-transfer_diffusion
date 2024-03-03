@@ -158,13 +158,12 @@ def get_correlation_features(model, dataset):
 
 	for c1 in dataset.label_list:
 		features[c1] = compute_features(model, dataset, c1)
-		print(features[c1])
 	for c1 in dataset.label_list: 
 		for c2 in dataset.label_list:
 			correlations[f'{c1}_{c2}'] = [[] for i in range(len(features[c1]))]
 			for c in range(len(features[c1])):
 				for img1, img2 in zip(features[c1][c], features[c2][c]):
-					correlations[f'{c1}_{c2}'][c].append(get_correlation(img1, img2))
+					correlations[f'{c1}_{c2}'][c].append(get_correlation(img1, img2, nii=False))
 
 				print(c1, c2, c, np.mean(correlations[f'{c1}_{c2}'][c]))
 	return correlations

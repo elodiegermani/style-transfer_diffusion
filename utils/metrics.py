@@ -7,13 +7,14 @@ import importlib
 sys.path.insert(0, './feature_extractor')
 
 
-def get_correlation(img1, img2):
+def get_correlation(data1, data2, nii = True):
     '''
     Compute the Pearson's correlation coefficient between original and reconstructed images.
     '''
-    
-    data1 = img1.get_fdata().copy()
-    data2 = img2.get_fdata().copy()
+
+    if nii: 
+	    data1 = data1.get_fdata().copy()
+	    data2 = data2.get_fdata().copy()
     
     # Vectorise input data
     data1 = np.reshape(data1, -1)
