@@ -7,7 +7,7 @@ Selection of target images is implemented using random selection, K-means cluste
 Conditional diffusion is inspired from ['Classifier-Free Diffusion Guidance'](https://arxiv.org/abs/2207.12598). 
 
 <p align = "center">
-<img width="400" src="gif_mnist_01.gif"/img>
+<img width="400" src="results/transfers.gif"/img>
 </p>
 <p align = "center">
 Samples generated from the model.
@@ -25,6 +25,10 @@ python3.10 -u main.py --model classifier --data_dir data --dataset dataset_rh_4c
 TODO
 
 #### Evaluate performance 
+
+```bash 
+python3.10 -u main.py --model classifier --data_dir data --dataset dataset_rh_4classes --labels pipelines --mode test --model_param ./results/models/classifier_b-64_lr-1e-04_epochs_140.pth
+```
 
 ### Diffusion models 
 #### Train 
