@@ -6,6 +6,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from nilearn import datasets, plotting
 import nibabel as nib
+import pandas as pd 
 from utils.metrics import get_correlation
 
 def visualize_features(parameters_file, dataset, classe, print_title=True):
@@ -156,14 +157,25 @@ def get_correlation_features(model, dataset):
 	features = {}
 	correlations = {}
 
+	df = pd.DataFrame(
+		{'Transfer':[], 'Layer':[], 'Correlation':[]}
+		)
+
 	for c1 in dataset.label_list:
 		features[c1] = compute_features(model, dataset, c1)
+
 	for c1 in dataset.label_list: 
 		for c2 in dataset.label_list:
 			correlations[f'{c1}_{c2}'] = [[] for i in range(len(features[c1]))]
+			
 			for c in range(len(features[c1])):
 				for img1, img2 in zip(features[c1][c], features[c2][c]):
 					correlations[f'{c1}_{c2}'][c].append(get_correlation(img1, img2, nii=False))
 
-				print(c1, c2, c, np.mean(correlations[f'{c1}_{c2}'][c]))
+				sub_df = pd.DataFrame(
+					{'Transfer':[f'{c1}_{c2}'], 'Layer':[c], 'Correlation':[np.mean(correlations[f'{c1}_{c2}'][c])]}
+					)
+
+				df = pd.concat([df, sub_df])
+
 	return correlations
