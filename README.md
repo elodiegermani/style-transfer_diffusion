@@ -14,7 +14,7 @@ Conditional diffusion is inspired from ['Classifier-Free Diffusion Guidance'](ht
 </p>
 
 
-|                                        | IS     | <td colspan=2>fsl-1 to spm-0 | <td colspan=2>spm-0 to fsl-1 | <td colspan=2>fsl-1 to spm-1 | <td colspan=2>fsl-1 to fsl-0 |
+|                                        | IS     | <td colspan=2>fsl-1 to spm-0</td> | <td colspan=2>spm-0 to fsl-1</td> | <td colspan=2>fsl-1 to spm-1</td> | <td colspan=2>fsl-1 to fsl-0</td> |
 |                                        | IS     | Corr.  | PSNR   | Corr.  | PSNR   | Corr.  | PSNR   | Corr.  | PSNR   |
 |----------------------------------------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
 | Initial                                | 3.69 | 76.2 | 78.2 | 76.2 | 78.2 | 82.6 | 81.3 | 91.0 | 83.9 |
