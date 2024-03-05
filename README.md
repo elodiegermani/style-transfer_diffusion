@@ -109,6 +109,7 @@ Conditional diffusion is inspired from ['Classifier-Free Diffusion Guidance'](ht
     </tr>
     <tr>
         <td>N=20</td>
+        <td>3.87</td>
         <td>86.1</td>
         <td>79.5</td>
         <td>79.2</td>
@@ -117,7 +118,6 @@ Conditional diffusion is inspired from ['Classifier-Free Diffusion Guidance'](ht
         <td>79.2</td>
         <td>83.9</td>
         <td>80.9</td>
-        <td></td>
     </tr>
     <tr>
         <td>N=5, random</td>
