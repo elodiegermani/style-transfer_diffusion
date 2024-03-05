@@ -10,7 +10,7 @@ Conditional diffusion is inspired from ['Classifier-Free Diffusion Guidance'](ht
 <img width="400" src="results/transfers.gif"/img>
 </p>
 <p align = "center">
-<br>Figure 1.</br> Generated images for all transfers using CC-DDPM.
+<b>Figure 1.</b> Generated images for all transfers using CC-DDPM.
 </p>
 
 
@@ -169,13 +169,13 @@ Conditional diffusion is inspired from ['Classifier-Free Diffusion Guidance'](ht
     </tr>
 </table>
 <p align = "center">
-<br>Table 1.</br> Performance associated with four transfers. IS means ”Inception Score” across all transfers. Pearson’s correlation (%) and Peak Signal to Noise Ration (PSNR) computed between generated and ground-truth target image for 20 images per transfer. Initial represents the metrics between the source image (before transfer) and the ground-truth target image. Boldface marks the top model. </p>
+<b>Table 1.</b> Performance associated with four transfers. IS means ”Inception Score” across all transfers. Pearson’s correlation (%) and Peak Signal to Noise Ration (PSNR) computed between generated and ground-truth target image for 20 images per transfer. Initial represents the metrics between the source image (before transfer) and the ground-truth target image. Boldface marks the top model. </p>
 
 <p align = "center">
 <img width="400" src="results/figures/visualization.png"/img>
 </p>
 <p align = "center">
-<br>Figure 2.</br> Generated images for two transfer and different competitors: conditioning with one-hot encoding (Ho & al., 2022), with a classifier and N=1 (Preechakul & al., 2022),  starGAN (Choi & al., 2018) and CCDPM.
+<b>Figure 2.</b> Generated images for two transfer and different competitors: conditioning with one-hot encoding (Ho & al., 2022), with a classifier and N=1 (Preechakul & al., 2022),  starGAN (Choi & al., 2018) and CCDPM.
 </p>
 
 ## How to reproduce ? 
