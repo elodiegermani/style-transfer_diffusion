@@ -74,18 +74,18 @@ Conditional diffusion is inspired from ['Classifier-Free Diffusion Guidance'](ht
     <tr>
         <td>StarGAN (Choi &amp; al., 2018)</td>
         <td>3.63</td>
-        <td>**90.5**</td>
-        <td>**81.9**</td>
-        <td>**87.5**</td>
-        <td>**84.2**</td>
-        <td>**87.6**</td>
-        <td>**81.8**</td>
-        <td>**91.5**</td>
-        <td>**85.0**</td>
+        <td><b>90.5</b></td>
+        <td><b>81.9</b></td>
+        <td><b>87.5</b></td>
+        <td><b>84.2</b></td>
+        <td><b>87.6</b></td>
+        <td><b>81.8</b></td>
+        <td><b>91.5</b></td>
+        <td><b>85.0</b></td>
     </tr>
     <tr>
         <td>CCDDPM</td>
-        <td>**3.93**</td>
+        <td><b>3.93</b></td>
         <td>86.1</td>
         <td>79.4</td>
         <td>79.0</td>
