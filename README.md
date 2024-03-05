@@ -14,21 +14,160 @@ Conditional diffusion is inspired from ['Classifier-Free Diffusion Guidance'](ht
 </p>
 
 
-|                                        | IS     | <td colspan=2>fsl-1 to spm-0</td> | <td colspan=2>spm-0 to fsl-1</td> | <td colspan=2>fsl-1 to spm-1</td> | <td colspan=2>fsl-1 to fsl-0</td> |
-|                                        | IS     | Corr.  | PSNR   | Corr.  | PSNR   | Corr.  | PSNR   | Corr.  | PSNR   |
-|----------------------------------------|--------|--------|--------|--------|--------|--------|--------|--------|--------|
-| Initial                                | 3.69 | 76.2 | 78.2 | 76.2 | 78.2 | 82.6 | 81.3 | 91.0 | 83.9 |
-| One-hot (Ho & al., 2022) | 3.66   | 83.8   | 77.2   | 75.0   | 79.4   | 78.7   | 77.7   | 81.1   | 79.5   |
-| N=1 (Preechakul & al., 2022)  | 3.70   | 85.5   | 79.0   | 77.8   | 80.0   | 79.9   | 78.0   | 82.8   | 80.2   |
-| StarGAN (Choi & al., 2018)      | 3.63   | **90.5** | **81.9** | **87.5** | **84.2** | **87.6** | **81.8** | **91.5** | **85.0** |
-| CCDDPM                                 | **3.93** | 86.1   | 79.4   | 79.0   | 80.7 | 81.2   | 78.9   | 84.1   | 80.6   |
-| N=5                                    | 3.86 | 86.4   | 79.8 | 78.7   | 80.6   | 81.2   | 79.4 | 84.5 | 80.9 |
-| N=20                                   | 86.1   | 79.5   | 79.2   | 80.7 | 81.3   | 79.2   | 83.9   | 80.9   |
-| N=5, random                            | 3.89 | 86.5   | 79.4   | 79.1   | 80.4   | 82.0 | 79.2   | 84.2   | 80.2   |
-| N=10, random                           | 3.86 | 86.5   | 79.2   | 79.0   | 80.2   | 81.8   | 79.4 | 84.3   | 80.8   |
-| N=20, random                           | 3.85 | 86.7 | 79.1   | 79.3 | 80.6   | 81.5   | 79.4 | 84.4   | 80.7   |
-| N=10, KNN                              | 3.75   | 84.9   | 79.3   | 78.7   | 80.0   | 81.6   | 79.1   | 83.6   | 80.7   |
-
+<table>
+	<tr>
+        <td></td> 
+        <td></td>
+        <td colspan=2>fsl-1 to spm-0</td>
+        <td colspan=2>spm-0 to fsl-1</td>
+        <td colspan=2>fsl-1 to spm-1</td>
+        <td colspan=2>fsl-1 to fsl-0</td>
+    </tr>
+	<tr>
+        <td></td> 
+        <td>IS</td>
+        <td>Corr.</td>
+        <td>PSNR</td>
+        <td>Corr.</td>
+        <td>PSNR</td>
+        <td>Corr.</td>
+        <td>PSNR</td>
+        <td>Corr.</td>
+        <td>PSNR</td>
+    </tr>
+    <tr>
+        <td>Initial</td>
+        <td>3.69</td>
+        <td>76.2</td>
+        <td>78.2</td>
+        <td>76.2</td>
+        <td>78.2</td>
+        <td>82.6</td>
+        <td>81.3</td>
+        <td>91.0</td>
+        <td>83.9</td>
+    </tr>
+    <tr>
+        <td>One-hot (Ho &amp; al., 2022)</td>
+        <td>3.66</td>
+        <td>83.8</td>
+        <td>77.2</td>
+        <td>75.0</td>
+        <td>79.4</td>
+        <td>78.7</td>
+        <td>77.7</td>
+        <td>81.1</td>
+        <td>79.5</td>
+    </tr>
+    <tr>
+        <td>N=1 (Preechakul &amp; al., 2022)</td>
+        <td>3.70</td>
+        <td>85.5</td>
+        <td>79.0</td>
+        <td>77.8</td>
+        <td>80.0</td>
+        <td>79.9</td>
+        <td>78.0</td>
+        <td>82.8</td>
+        <td>80.2</td>
+    </tr>
+    <tr>
+        <td>StarGAN (Choi &amp; al., 2018)</td>
+        <td>3.63</td>
+        <td>**90.5**</td>
+        <td>**81.9**</td>
+        <td>**87.5**</td>
+        <td>**84.2**</td>
+        <td>**87.6**</td>
+        <td>**81.8**</td>
+        <td>**91.5**</td>
+        <td>**85.0**</td>
+    </tr>
+    <tr>
+        <td>CCDDPM</td>
+        <td>**3.93**</td>
+        <td>86.1</td>
+        <td>79.4</td>
+        <td>79.0</td>
+        <td>80.7</td>
+        <td>81.2</td>
+        <td>78.9</td>
+        <td>84.1</td>
+        <td>80.6</td>
+    </tr>
+    <tr>
+        <td>N=5</td>
+        <td>3.86</td>
+        <td>86.4</td>
+        <td>79.8</td>
+        <td>78.7</td>
+        <td>80.6</td>
+        <td>81.2</td>
+        <td>79.4</td>
+        <td>84.5</td>
+        <td>80.9</td>
+    </tr>
+    <tr>
+        <td>N=20</td>
+        <td>86.1</td>
+        <td>79.5</td>
+        <td>79.2</td>
+        <td>80.7</td>
+        <td>81.3</td>
+        <td>79.2</td>
+        <td>83.9</td>
+        <td>80.9</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>N=5, random</td>
+        <td>3.89</td>
+        <td>86.5</td>
+        <td>79.4</td>
+        <td>79.1</td>
+        <td>80.4</td>
+        <td>82.0</td>
+        <td>79.2</td>
+        <td>84.2</td>
+        <td>80.2</td>
+    </tr>
+    <tr>
+        <td>N=10, random</td>
+        <td>3.86</td>
+        <td>86.5</td>
+        <td>79.2</td>
+        <td>79.0</td>
+        <td>80.2</td>
+        <td>81.8</td>
+        <td>79.4</td>
+        <td>84.3</td>
+        <td>80.8</td>
+    </tr>
+    <tr>
+        <td>N=20, random</td>
+        <td>3.85</td>
+        <td>86.7</td>
+        <td>79.1</td>
+        <td>79.3</td>
+        <td>80.6</td>
+        <td>81.5</td>
+        <td>79.4</td>
+        <td>84.4</td>
+        <td>80.7</td>
+    </tr>
+    <tr>
+        <td>N=10, KNN</td>
+        <td>3.75</td>
+        <td>84.9</td>
+        <td>79.3</td>
+        <td>78.7</td>
+        <td>80.0</td>
+        <td>81.6</td>
+        <td>79.1</td>
+        <td>83.6</td>
+        <td>80.7</td>
+    </tr>
+</table>
 <p align = "center">
 <br>Table 1.</br> Performance associated with four transfers. IS means ”Inception Score” across all transfers. Pearson’s correlation (%) and Peak Signal to Noise Ration (PSNR) computed between generated and ground-truth target image for 20 images per transfer. Initial represents the metrics between the source image (before transfer) and the ground-truth target image. Boldface marks the top model. </p>
 
