@@ -7,13 +7,13 @@ Selection of target images is implemented using random selection, K-means cluste
 Conditional diffusion is inspired from ['Classifier-Free Diffusion Guidance'](https://arxiv.org/abs/2207.12598). 
 
 <p align = "center">
-<img width="400" src="results/transfers.gif"/img>
+<img width="800" src="results/transfers.gif"/img>
 </p>
 <p align = "center">
 <b>Figure 1.</b> Generated images for all transfers using CC-DDPM.
 </p>
 
-
+<p align = "center">
 <table>
 	<tr>
         <td></td> 
@@ -168,11 +168,12 @@ Conditional diffusion is inspired from ['Classifier-Free Diffusion Guidance'](ht
         <td>80.7</td>
     </tr>
 </table>
+</p>
 <p align = "center">
 <b>Table 1.</b> Performance associated with four transfers. IS means ”Inception Score” across all transfers. Pearson’s correlation (%) and Peak Signal to Noise Ration (PSNR) computed between generated and ground-truth target image for 20 images per transfer. Initial represents the metrics between the source image (before transfer) and the ground-truth target image. Boldface marks the top model. </p>
 
 <p align = "center">
-<img width="400" src="results/figures/visualization.png"/img>
+<img width="600" src="results/figures/visualization.png"/img>
 </p>
 <p align = "center">
 <b>Figure 2.</b> Generated images for two transfer and different competitors: conditioning with one-hot encoding (Ho & al., 2022), with a classifier and N=1 (Preechakul & al., 2022),  starGAN (Choi & al., 2018) and CCDPM.
@@ -180,42 +181,50 @@ Conditional diffusion is inspired from ['Classifier-Free Diffusion Guidance'](ht
 
 ## How to reproduce ? 
 
-If you use pre-trained models, for each command used to evaluate performance, change `--model_param` to the path of the pre-trained classifier and `--model_save_dir` to the path of the directory containing the pre-trained diffusion models. 
-
-### Classifier
-
-#### Train
+### Step 1: Train classifier
 ```bash
 python3.10 -u main.py --model classifier --data_dir data --dataset dataset_rh_4classes --labels pipelines --model_save_dir results/models --batch_size 64 --lrate 1e-4 --n_epoch 150
 ```
+#### Option
+If you don't want to train the classifier, you can use pre-trained models.
+For each of the following command, change `--model_param` to the path of the pre-trained classifier and `--model_save_dir` to the path of the directory containing the pre-trained diffusion models. 
 
-#### Evaluate 
-
+### Step 2: Evaluate classifiers performance (Supplementary Figure 1 and Supplementary Table 1)
 ```bash 
 python3.10 -u main.py --model classifier --data_dir data --dataset dataset_rh_4classes --labels pipelines --mode test --model_param ./results/models/classifier_b-64_lr-1e-04_epochs_150.pth
 ```
+#### Option
+You can skip this part if you are not interested in the results. 
 
-### Diffusion models 
-#### Train 
+### Step 3: Train image-to-image transition models 
+Choose the model to train between `c_ddpm` (Ho et al., 2021), `cc_ddpm` and `stargan`. 
 
+If using one of `c_ddpm` and `cc_ddpm`: 
 ```bash
 python3.10 -u main.py --model cc_ddpm --mode train --dataset dataset_rh_4classes --labels pipelines --model_save_dir results/models --batch_size 8 --lrate 1e-4 --n_epoch 200 --n_classes 4 --sample_dir results/samples
 ```
 
-#### Transfer
-
-```bash
-python3.10 -u main.py --model cc_ddpm --mode transfer --dataset dataset_rh_4classes --labels pipelines --model_save_dir results/models --test_iter 200 --n_classes 4 --sample_dir results/samples
-```
-
-### StarGAN
-
-####  Train
+If using `stargan`:
 ```bash
 python3.10 -u main.py --model stargan --mode train --dataset dataset_rh_4classes --labels pipelines --image_size 56 --c_dim 4 --batch_size 16 --data_dir data --sample_dir results/samples --model_save_dir results/models
 ```
 
-#### Test
+#### Option
+As for the classifier, you can use pre-trained models. To do so, change `--model_save_dir` to the path of the directory containing the pre-trained diffusion models. 
+
+### Step 4: Generate samples
+If using one of `c_ddpm` and `cc_ddpm`: 
+```bash
+python3.10 -u main.py --model cc_ddpm --mode transfer --dataset dataset_rh_4classes --labels pipelines --model_save_dir results/models --test_iter 200 --n_classes 4 --sample_dir results/samples
+```
+
+If using `stargan`:
 ```bash
 python3.10 -u main.py --model stargan --mode test --dataset dataset_rh_4classes --labels pipelines --image_size 56 --c_dim 4 --batch_size 1 --data_dir data --sample_dir results/samples --model_save_dir results/models --test_iters 100000
 ```
+
+### Step 5: Compute metrics 
+To compute metrics, you can use the `notebook.ipynb`. 
+
+#### Option
+If you want to avoid all the steps above, you can download pre-computed metrics available as supplementary materials and run the `Reproduce figures` part of the notebook only. 
