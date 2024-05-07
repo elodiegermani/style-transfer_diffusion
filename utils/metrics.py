@@ -32,13 +32,38 @@ def get_correlation(data1, data2, nii = True):
     
     return corr_coeff
 
+def get_difference(data1, data2, nii = True):
+    '''
+    Compute the MSE between original and reconstructed images.
+    '''
+
+    if nii: 
+	    data1 = data1.get_fdata().copy()
+	    data2 = data2.get_fdata().copy()
+    
+    # Vectorise input data
+    data1 = np.reshape(data1, -1)
+    data2 = np.reshape(data2, -1)
+
+    in_mask_indices = np.logical_not(
+        np.logical_or(
+            np.logical_or(np.isnan(data1), np.absolute(data1) == 0),
+            np.logical_or(np.isnan(data2), np.absolute(data2) == 0)))
+
+    data1 = data1[in_mask_indices] 
+    data2 = data2[in_mask_indices]
+    
+    mse = np.mean((data1 - data2) ** 2)
+    
+    return mse
+
 
 def PSNR(data1, data2):
 	mse = np.mean((data1 - data2) ** 2)
 	if(mse == 0):  # MSE is zero means no noise is present in the signal .
 				  # Therefore PSNR have no importance.
 		return 100
-	max_pixel = 255.0
+	max_pixel = 1
 	psnr = 20 * log10(max_pixel / sqrt(mse))
 	return psnr
 
