@@ -43,7 +43,7 @@ class Solver(object):
         self.resume_iters = config.resume_iters
 
         # Test configurations.
-        self.test_iters = config.test_iters
+        self.test_iters = config.test_iter
         self.model_param = config.model_param
 
         # Miscellaneous.
