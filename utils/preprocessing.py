@@ -74,6 +74,7 @@ def preprocessing(data_dir, output_dir):
         - output_dir, str: path to directory where 'preprocessed' directory is stored and where all preprocessed images will be stored.
 
     '''
+    print('----PREPROCESSING----')
     # Get image list to preprocess
     img_list, input_dir = get_imlist(op.join(data_dir))
         
@@ -87,6 +88,7 @@ def preprocessing(data_dir, output_dir):
     target_shape = (50,59,48)
 
     if not os.path.exists(op.join(output_dir, f'normalized', 'group_mask.nii.gz')):
+        print('Computing group-level mask')
         mask_list = []
         for pipeline in ['fsl-5-0-0', 'fsl-5-0-1', 
         'fsl-8-0-0', 'fsl-8-0-1', 'fsl-5-6-0', 'fsl-5-6-1', 'fsl-8-6-0', 'fsl-8-6-1',
@@ -99,6 +101,7 @@ def preprocessing(data_dir, output_dir):
         mask = masking.intersect_masks(mask_list, threshold=1)
         nib.save(mask, op.join(output_dir, f'normalized', 'group_mask.nii.gz'))
     else:
+        print('Mask exists.')
         mask = nib.load(op.join(output_dir, f'normalized', 'group_mask.nii.gz'))
     
     for idx, img in enumerate(img_list):
