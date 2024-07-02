@@ -1,5 +1,5 @@
-from models.stargan_model import Generator
-from models.stargan_model import Discriminator
+from models.stargan_models import Generator
+from models.stargan_models import Discriminator
 from torch.autograd import Variable
 from torchvision.utils import save_image
 import torch
