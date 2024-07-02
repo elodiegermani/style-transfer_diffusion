@@ -34,7 +34,7 @@ source /gpfswork/rech/gft/umh25bv/miniconda3/bin/activate /gpfswork/rech/gft/umh
 --model stargan --mode test --dataset dataset_lh_4classes-jeanzay \
 --labels pipelines --image_size 56 --c_dim 4 --batch_size 1 \
 --data_dir data --sample_dir results/samples/stargan-rh--lh \
---model_save_dir results/models/stargan-rh --test_iters 200000
+--model_save_dir results/models/stargan-rh --test_iter 200000
 
 #C-DDPM
 ## Train
