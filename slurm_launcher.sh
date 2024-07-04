@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=te-stargan-rf # nom du job
+#SBATCH --job-name=te-stargan-rf--rh # nom du job
 #SBATCH --ntasks=1                   # number of MP tasks
 #SBATCH --ntasks-per-node=1          # number of MPI tasks per node
 #SBATCH --partition=gpu_p13
@@ -9,8 +9,8 @@
 #SBATCH --hint=nomultithread         # we get physical cores not logical
 #SBATCH --distribution=block:block   # we pin the tasks on contiguous cores
 #SBATCH --time=1:00:00              # maximum execution time (HH:MM:SS)
-#SBATCH --output=te-stargan-rf%j.out # output file name
-#SBATCH --error=te-stargan-rf%j.err  # error file name
+#SBATCH --output=te-stargan-rf--rh%j.out # output file name
+#SBATCH --error=te-stargan-rf--rh%j.err  # error file name
 
 source /gpfswork/rech/gft/umh25bv/miniconda3/bin/activate /gpfswork/rech/gft/umh25bv/miniconda3/envs/workEnv
 
@@ -31,9 +31,9 @@ source /gpfswork/rech/gft/umh25bv/miniconda3/bin/activate /gpfswork/rech/gft/umh
 
 # Test
 /gpfswork/rech/gft/umh25bv/miniconda3/envs/workEnv/bin/python3 -u /gpfswork/rech/gft/umh25bv/style-transfer_diffusion/main.py \
---model stargan --mode test --dataset dataset_rf_4classes-jeanzay \
+--model stargan --mode test --dataset dataset_rh_4classes-jeanzay \
 --labels pipelines --image_size 56 --c_dim 4 --batch_size 1 \
---data_dir data --sample_dir results/samples/stargan-rf--lf \
+--data_dir data --sample_dir results/samples/stargan-rf--rh \
 --model_save_dir results/models/stargan-rf --test_iter 70000
 
 #C-DDPM
