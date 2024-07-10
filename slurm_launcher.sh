@@ -4,11 +4,10 @@
 #SBATCH --ntasks-per-node=1          # number of MPI tasks per node
 #SBATCH --partition=gpu_p13
 #SBATCH --gres=gpu:1                 # number of GPUs per node
-#SBATCH --qos=qos_gpu-t4
 #SBATCH --cpus-per-task=16           # number of cores per tasks
 #SBATCH --hint=nomultithread         # we get physical cores not logical
 #SBATCH --distribution=block:block   # we pin the tasks on contiguous cores
-#SBATCH --time=100:00:00              # maximum execution time (HH:MM:SS)
+#SBATCH --time=19:00:00              # maximum execution time (HH:MM:SS)
 #SBATCH --output=te-cc_ddpm-rh%j.out # output file name
 #SBATCH --error=te-cc_ddpm-rh%j.err  # error file name
 
