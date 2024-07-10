@@ -1,5 +1,6 @@
 import numpy as np
 import pandas as pd 
+import nibabel as nib
 from math import log10, sqrt
 import torch
 import sys
@@ -68,8 +69,8 @@ def PSNR(data1, data2):
 	return psnr
 
 def class_change(model_param, image):
-	sys.path.insert(0, './feature_extractor')
-	package = 'model'
+	sys.path.insert(0, './models')
+	package = 'classifier'
 	md = importlib.import_module(package)
 
 	classifier = md.Classifier3D(
@@ -100,3 +101,16 @@ def get_inception_score(p_yx, eps=1E-16):
 	is_score = np.exp(avg_kl_d)
 	
 	return is_score
+
+def mask(trg, gen):
+    trg_data = nib.load(trg).get_fdata() 
+    gen_data = nib.load(gen).get_fdata()
+
+    out_mask_indices = np.logical_or(
+        np.isnan(trg_data), np.absolute(trg_data) == 0)
+
+    gen_data[out_mask_indices] = 0
+
+    gen_mask_img = nib.Nifti1Image(gen_data, nib.load(gen).affine)
+    
+    return gen_mask_img
