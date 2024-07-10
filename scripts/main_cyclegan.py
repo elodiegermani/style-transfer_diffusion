@@ -2,7 +2,7 @@ import os
 import argparse
 from cycleGAN.cycleGAN_trainer import trainer
 from cycleGAN.cycleGAN_tester import tester
-from utils.datasets import ClassifDataset
+from utils.datasets import UnpairedImageDataset
 from torch.backends import cudnn
 from torch.utils.data import DataLoader
 import pandas as pd
