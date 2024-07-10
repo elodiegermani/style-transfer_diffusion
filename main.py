@@ -16,7 +16,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
 
     parser.add_argument('--model', type=str, 
-        help='model to train, one of cc_ddpm, c_ddpm, classifier or stargan', default='cc_ddpm')
+        help='model to train, one of cc_ddpm, c_ddpm, classifier, stargan, pix2pix or cycleGAN', default='cc_ddpm')
     parser.add_argument('--data_dir', type=str, 
         help = 'where data csv files are stored', default='data')
     parser.add_argument('--dataset', type=str, 
@@ -117,6 +117,12 @@ if __name__ == '__main__':
 
     elif config.model == 'stargan':
         main_stargan.main(config)
+
+    elif config.model == 'cycleGAN':
+        main_cyclegan.main(config)
+
+    elif config.model == 'pix2pix':
+        main_pix2pix.main(config)
 
     elif config.model == 'classifier':
         if config.mode == 'train':

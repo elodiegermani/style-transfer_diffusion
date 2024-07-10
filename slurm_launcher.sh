@@ -1,16 +1,15 @@
 #!/bin/bash
-#SBATCH --job-name=te-stargan-rf--rh # nom du job
+#SBATCH --job-name=tr-pix2pix-rh # nom du job
 #SBATCH --ntasks=1                   # number of MP tasks
 #SBATCH --ntasks-per-node=1          # number of MPI tasks per node
 #SBATCH --partition=gpu_p13
 #SBATCH --gres=gpu:1                 # number of GPUs per node
-#SBATCH --qos=qos_gpu-dev
 #SBATCH --cpus-per-task=16           # number of cores per tasks
 #SBATCH --hint=nomultithread         # we get physical cores not logical
 #SBATCH --distribution=block:block   # we pin the tasks on contiguous cores
-#SBATCH --time=1:00:00              # maximum execution time (HH:MM:SS)
-#SBATCH --output=te-stargan-rf--rh%j.out # output file name
-#SBATCH --error=te-stargan-rf--rh%j.err  # error file name
+#SBATCH --time=19:00:00              # maximum execution time (HH:MM:SS)
+#SBATCH --output=tr-pix2pix-rh%j.out # output file name
+#SBATCH --error=tr-pix2pix-rh%j.err  # error file name
 
 source /gpfswork/rech/gft/umh25bv/miniconda3/bin/activate /gpfswork/rech/gft/umh25bv/miniconda3/envs/workEnv
 
@@ -21,6 +20,13 @@ source /gpfswork/rech/gft/umh25bv/miniconda3/bin/activate /gpfswork/rech/gft/umh
 # --model_save_dir feature_extractor/models --batch_size 64 \
 # --lrate 1e-4 --n_epoch 150
 
+# Pix2Pix
+/gpfswork/rech/gft/umh25bv/miniconda3/envs/workEnv/bin/python3 -u /gpfswork/rech/gft/umh25bv/style-transfer_diffusion/main.py \
+--model pix2pix --mode train --dataset dataset_rh_4classes-jeanzay \
+--labels pipelines --image_size 56 --c_dim 4 --batch_size 16 \
+--data_dir data --sample_dir results/samples/pix2pix-rh \
+--model_save_dir results/models/pix2pix-rh
+
 # StarGAN 
 ## Train
 # /gpfswork/rech/gft/umh25bv/miniconda3/envs/workEnv/bin/python3 -u /gpfswork/rech/gft/umh25bv/style-transfer_diffusion/main.py \
@@ -30,11 +36,11 @@ source /gpfswork/rech/gft/umh25bv/miniconda3/bin/activate /gpfswork/rech/gft/umh
 # --model_save_dir results/models/stargan-rf
 
 # Test
-/gpfswork/rech/gft/umh25bv/miniconda3/envs/workEnv/bin/python3 -u /gpfswork/rech/gft/umh25bv/style-transfer_diffusion/main.py \
---model stargan --mode test --dataset dataset_rh_4classes-jeanzay \
---labels pipelines --image_size 56 --c_dim 4 --batch_size 1 \
---data_dir data --sample_dir results/samples/stargan-rf--rh \
---model_save_dir results/models/stargan-rf --test_iter 70000
+# /gpfswork/rech/gft/umh25bv/miniconda3/envs/workEnv/bin/python3 -u /gpfswork/rech/gft/umh25bv/style-transfer_diffusion/main.py \
+# --model stargan --mode test --dataset dataset_rh_4classes-jeanzay \
+# --labels pipelines --image_size 56 --c_dim 4 --batch_size 1 \
+# --data_dir data --sample_dir results/samples/stargan-rf--rh \
+# --model_save_dir results/models/stargan-rf --test_iter 70000
 
 #C-DDPM
 ## Train
