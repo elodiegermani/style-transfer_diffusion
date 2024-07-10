@@ -10,7 +10,7 @@ https://arxiv.org/abs/2207.12598
 '''
 import os
 import argparse 
-from scripts import main_cc_ddpm, main_c_ddpm, main_classifier, main_stargan
+from scripts import main_cc_ddpm, main_c_ddpm, main_classifier, main_stargan, main_pix2pix, main_cyclegan
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
