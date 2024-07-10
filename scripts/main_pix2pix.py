@@ -25,7 +25,7 @@ def main(config):
         df_pipelines = pd.read_csv(dataset_file)
         subset_list = np.unique(df_pipelines['pipelines']).tolist()
 
-         for subset_A in subset_list:
+        for subset_A in subset_list:
             for subset_B in subset_list:
 
                 dataset = PairedImageDataset(subset_A, subset_B, dataset_file, contrast_list=['right-hand'])
