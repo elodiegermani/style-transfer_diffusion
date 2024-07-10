@@ -27,6 +27,7 @@ def main(config):
 
         for subset_A in subset_list:
             for subset_B in subset_list:
+                print(f'Transfer {subset_A} to {subset_B}')
 
                 dataset = UnpairedImageDataset(subset_A, subset_B, dataset_file, contrast_list=['right-hand'])
 
@@ -53,6 +54,7 @@ def main(config):
 
         for subset_A in subset_list:
             for subset_B in subset_list:
+                print(f'Transfer {subset_A} to {subset_B}')
 
                 valid_dataset = ds.PairedImageDataset(subset_A, subset_B, dataset_file, contrast_list=['right-hand'])
                 print('Number of images in TEST:', len(valid_dataset.data_B))
