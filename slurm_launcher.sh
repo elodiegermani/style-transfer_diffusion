@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH --job-name=tr-pix2pix-rh # nom du job
+#SBATCH --job-name=tr-cyclegan-rh # nom du job
 #SBATCH --ntasks=1                   # number of MP tasks
 #SBATCH --ntasks-per-node=1          # number of MPI tasks per node
 #SBATCH --partition=gpu_p13
@@ -8,8 +8,8 @@
 #SBATCH --hint=nomultithread         # we get physical cores not logical
 #SBATCH --distribution=block:block   # we pin the tasks on contiguous cores
 #SBATCH --time=19:00:00              # maximum execution time (HH:MM:SS)
-#SBATCH --output=tr-pix2pix-rh%j.out # output file name
-#SBATCH --error=tr-pix2pix-rh%j.err  # error file name
+#SBATCH --output=tr-cyclegan-rh%j.out # output file name
+#SBATCH --error=tr-cyclegan-rh%j.err  # error file name
 
 source /gpfswork/rech/gft/umh25bv/miniconda3/bin/activate /gpfswork/rech/gft/umh25bv/miniconda3/envs/workEnv
 
@@ -20,12 +20,12 @@ source /gpfswork/rech/gft/umh25bv/miniconda3/bin/activate /gpfswork/rech/gft/umh
 # --model_save_dir feature_extractor/models --batch_size 64 \
 # --lrate 1e-4 --n_epoch 150
 
-# Pix2Pix
+# Pix2Pix / CycleGAN
 /gpfswork/rech/gft/umh25bv/miniconda3/envs/workEnv/bin/python3 -u /gpfswork/rech/gft/umh25bv/style-transfer_diffusion/main.py \
---model pix2pix --mode train --dataset dataset_rh_4classes-jeanzay \
+--model cycleGAN --mode train --dataset dataset_rh_4classes-jeanzay \
 --labels pipelines --image_size 56 --c_dim 4 --batch_size 16 \
---data_dir data --sample_dir results/samples/pix2pix-rh \
---model_save_dir results/models/pix2pix-rh
+--data_dir data --sample_dir results/samples/cycleGAN-rh \
+--model_save_dir results/models/cycleGAN-rh
 
 # StarGAN 
 ## Train

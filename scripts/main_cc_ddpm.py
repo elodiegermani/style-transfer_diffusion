@@ -124,7 +124,7 @@ def transfer(config):
             for w in config.ws_test:
                 for i in range(config.n_classes):
 
-                    c_idx = torch.argmax(c, dim=1)[0]
+                    c_idx = dataset.label_list[torch.argmax(c, dim=1)[0]]
                     c_t_idx = dataset.label_list[i]
 
                     class_idx = [cl for cl in range(len(train_dataset.get_original_labels())) if train_dataset.get_original_labels()[cl]==c_t_idx]
@@ -208,6 +208,6 @@ def transfer(config):
                         affine
                         )
 
-                    nib.save(img_xgen, f'{config.sample_dir}/gen-image_{n}-{config.dataset}_ep{config.test_iter}_w{w}_n{config.n_C}-orig_{c_idx}-target_{c_t_idx}.nii.gz')
-                    nib.save(img_xreal, f'{config.sample_dir}/trg-image_{n}-{config.dataset}_ep{config.test_iter}_w{w}_n{config.n_C}-orig_{c_idx}-target_{c_t_idx}.nii.gz')
-                    nib.save(img_xsrc, f'{config.sample_dir}/src-image_{n}-{config.dataset}_ep{config.test_iter}_w{w}_n{config.n_C}-orig_{c_idx}-target_{c_t_idx}.nii.gz')
+                    nib.save(img_xgen, f'{config.sample_dir}/gen_img-{n}_orig-{c_idx}_target-{c_t_idx}.nii.gz')
+                    nib.save(img_xreal, f'{config.sample_dir}/trg_img-{n}_orig-{c_idx}_target-{c_t_idx}.nii.gz')
+                    nib.save(img_xsrc, f'{config.sample_dir}/src_img-{n}_orig-{c_idx}_target-{c_t_idx}.nii.gz')
