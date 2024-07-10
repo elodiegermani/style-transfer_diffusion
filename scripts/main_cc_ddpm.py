@@ -208,6 +208,6 @@ def transfer(config):
                         affine
                         )
 
-                    nib.save(img_xgen, f'{config.sample_dir}/gen_img-{n}_orig-{c_idx}_target-{c_t_idx}.nii.gz')
-                    nib.save(img_xreal, f'{config.sample_dir}/trg_img-{n}_orig-{c_idx}_target-{c_t_idx}.nii.gz')
-                    nib.save(img_xsrc, f'{config.sample_dir}/src_img-{n}_orig-{c_idx}_target-{c_t_idx}.nii.gz')
+                    nib.save(img_xgen, f'{config.sample_dir}/gen_img-{n}_w{w}_n{config.n_C}_orig-{c_idx}_target-{c_t_idx}.nii.gz')
+                    nib.save(img_xreal, f'{config.sample_dir}/trg_img-{n}_w{w}_n{config.n_C}_orig-{c_idx}_target-{c_t_idx}.nii.gz')
+                    nib.save(img_xsrc, f'{config.sample_dir}/src_img-{n}_w{w}_n{config.n_C}_orig-{c_idx}_target-{c_t_idx}.nii.gz')

@@ -166,6 +166,6 @@ def transfer(config):
                     p_source = dataset.label_list[torch.argmax(c, dim=1)[0]]
                     p_target = dataset.label_list[torch.argmax(c_t, dim=1)[0]]
 
-                    nib.save(img_xgen, f'{config.sample_dir}/gen_img-{n}_orig-{p_source}_target-{p_target}.nii.gz')
-                    nib.save(img_xreal, f'{config.sample_dir}/trg_img-{n}_orig-{p_source}_target-{p_target}.nii.gz')
-                    nib.save(img_xsrc, f'{config.sample_dir}/src_img-{n}_orig-{p_source}_target-{p_target}.nii.gz')
+                    nib.save(img_xgen, f'{config.sample_dir}/gen_img-{n}_w{w}_orig-{p_source}_target-{p_target}.nii.gz')
+                    nib.save(img_xreal, f'{config.sample_dir}/trg_img-{n}_w{w}_orig-{p_source}_target-{p_target}.nii.gz')
+                    nib.save(img_xsrc, f'{config.sample_dir}/src_img-{n}_w{w}_orig-{p_source}_target-{p_target}.nii.gz')
