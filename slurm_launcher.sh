@@ -7,7 +7,7 @@
 #SBATCH --cpus-per-task=16           # number of cores per tasks
 #SBATCH --hint=nomultithread         # we get physical cores not logical
 #SBATCH --distribution=block:block   # we pin the tasks on contiguous cores
-#SBATCH --time=19:00:00              # maximum execution time (HH:MM:SS)
+#SBATCH --time=14:00:00              # maximum execution time (HH:MM:SS)
 #SBATCH --output=tr-stargan-lh%j.out # output file name
 #SBATCH --error=tr-stargan-lh%j.err  # error file name
 
