@@ -26,4 +26,4 @@ if __name__ == '__main__':
     labels = 'pipelines',
     param_file = './results/models/classifier_b-64_lr-1e-04_epochs_140.pth'
 
-    main(config)
+    main(data_dir, mode, dataset, labels, param_file)
