@@ -15,7 +15,7 @@ def visualize_features(parameters_file, dataset, classe, print_title=True):
 
 	model = classifier.load_state_dict(
             torch.load(
-                config.model_param, 
+                parameters_file, 
                 map_location='cpu'
                 )
             )
