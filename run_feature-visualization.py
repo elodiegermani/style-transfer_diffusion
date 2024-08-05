@@ -13,8 +13,7 @@ def main(data_dir, mode, dataset, labels, param_file):
         print(classes)
         p=True
         feature_visualization.visualize_features(param_file, dataset, classe=classes, 
-                                                 classe_name=dataset.label_list[i], 
-                                                 types='right-hand', print_title=p)
+                                                 print_title=p)
 
 
 if __name__ == '__main__':
