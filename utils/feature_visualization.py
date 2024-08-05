@@ -86,7 +86,7 @@ def visualize_features(parameters_file, dataset, classe, print_title=True):
 				a.set_title(f'ORIGINAL IMAGE', fontsize=20, weight='bold')
 			else:
 				a.set_title(f'LAYER {i}', fontsize=20, weight='bold')
-	plt.savefig(f'../results/figures/mean_features_{classe}.png')
+	plt.savefig(f'./results/figures/mean_features_{classe}.png')
 	plt.show()
 
 
