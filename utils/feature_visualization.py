@@ -17,11 +17,14 @@ def visualize_features(parameters_file, dataset, classe, print_title=True):
 
 	print(model)
 
-	model = model.load_state_dict(
-            torch.load(
+	state_dict = torch.load(
                 parameters_file, 
                 map_location='cpu'
                 )
+	print(state_dict)
+
+	model = model.load_state_dict(
+            state_dict
             )
 
 	# we will save the conv layer weights in this list
