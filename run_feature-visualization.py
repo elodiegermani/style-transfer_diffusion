@@ -19,10 +19,10 @@ def main(config):
 if __name__ == '__main__':
     
     config = {
-        data_dir : './data',
-        dataset : 'dataset_rh_4classes-jeanzay',
-        mode : 'test',
-        labels : 'pipelines'
+        'data_dir' : './data',
+        'dataset' : 'dataset_rh_4classes-jeanzay',
+        'mode' : 'test',
+        'labels' : 'pipelines'
 
     }
 
