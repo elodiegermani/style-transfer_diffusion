@@ -8,10 +8,19 @@ from nilearn import datasets, plotting
 import nibabel as nib
 import pandas as pd 
 from utils.metrics import get_correlation
+from models.classifier import Classifier3D
 
 def visualize_features(parameters_file, dataset, classe, print_title=True):
+	classifier = Classifier3D(n_class=4)
 
-	model=torch.load(parameters_file, 'cpu')
+	model = classifier.load_state_dict(
+            torch.load(
+                config.model_param, 
+                map_location='cpu'
+                )
+            )
+
+	model.eval()
 	# we will save the conv layer weights in this list
 	model_weights =[]
 	#we will save the 49 conv layers in this list
