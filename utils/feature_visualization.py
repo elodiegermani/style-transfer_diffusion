@@ -20,7 +20,6 @@ def visualize_features(parameters_file, dataset, classe, print_title=True):
                 )
             )
 
-	model.eval()
 	# we will save the conv layer weights in this list
 	model_weights =[]
 	#we will save the 49 conv layers in this list
