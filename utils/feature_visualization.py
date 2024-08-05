@@ -85,9 +85,9 @@ def visualize_features(parameters_file, dataset, classe, print_title=True):
 		a = fig.add_subplot(1,5, i+1)
 		mean_img = np.mean(all_img[i], axis=0)
 
-		print(np.amin(mean_img), np.amax(mean_img))
+		minmax = [0.5, 0.1, 0.1, 0.01, 0.01]
 
-		imgplot = plt.imshow(mean_img, cmap = nilearn_cmaps['cold_hot'], vmin=-0.4, vmax=0.3)
+		imgplot = plt.imshow(mean_img, cmap = nilearn_cmaps['cold_hot'], vmin=-minmax[i], vmax=minmax[i])
 		#plt.colorbar()
 		a.axis("off")
 		if print_title:
