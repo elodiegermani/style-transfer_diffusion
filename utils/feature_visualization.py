@@ -87,7 +87,7 @@ def visualize_features(parameters_file, dataset, classe, print_title=True):
 
 		print(np.amin(mean_img), np.amax(mean_img))
 
-		imgplot = plt.imshow(mean_img, cmap = nilearn_cmaps['cold_hot'], vmin=-1, vmax=5)
+		imgplot = plt.imshow(mean_img, cmap = nilearn_cmaps['cold_hot'], vmin=-0.4, vmax=0.3)
 		#plt.colorbar()
 		a.axis("off")
 		if print_title:
