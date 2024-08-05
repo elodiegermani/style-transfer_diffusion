@@ -9,11 +9,11 @@ def main(config):
         dataset_file, 
         config.labels)
 
-        for i, classes in enumerate(dataset.label_list):
-            print(classes)
-            p=True
-            feature_visualization.visualize_features(config.param_file, dataset, classe=classes, 
-                                                     classe_name=dataset.label_list[i], types='right-hand', print_title=p)
+    for i, classes in enumerate(dataset.label_list):
+        print(classes)
+        p=True
+        feature_visualization.visualize_features(config.param_file, dataset, classe=classes, 
+                                                 classe_name=dataset.label_list[i], types='right-hand', print_title=p)
 
 
 if __name__ == '__main__':
