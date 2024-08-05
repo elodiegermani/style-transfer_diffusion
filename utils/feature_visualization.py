@@ -11,7 +11,9 @@ from utils.metrics import get_correlation
 from models.classifier import Classifier3D
 
 def visualize_features(parameters_file, dataset, classe, print_title=True):
-	model = Classifier3D(n_class=len(dataset.label_list))
+	model = Classifier3D(
+		n_class=4
+		)
 
 	model = model.load_state_dict(
             torch.load(
