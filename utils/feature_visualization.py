@@ -15,6 +15,8 @@ def visualize_features(parameters_file, dataset, classe, print_title=True):
 		n_class=4
 		)
 
+	print(model)
+
 	model = model.load_state_dict(
             torch.load(
                 parameters_file, 
